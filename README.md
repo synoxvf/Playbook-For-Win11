@@ -20,6 +20,8 @@ Playbook for Windows 11 is all about improving performance and minimizing system
 - Power Settings
 - Disable Scheduled Tasks
 - Configure Windows Services
+- Disable Windows Defender
+- Disable Windows Updates
 ## Recommendations after installing the Playbook
 - **DO NOT** apply other settings
 - Use Post-Install to customize and install the drivers you need.
