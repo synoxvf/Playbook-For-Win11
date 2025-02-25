@@ -1,0 +1,79 @@
+title: Main
+actions:
+  - !writeStatus: {status: 'Copying files'}
+  - !powerShell:
+    command: |
+      Copy-Item -Path Post-Install -Destination $env:windir -Recurse -Force
+      Copy-Item -Path XHCI-IMOD-Interval.ps1 -Destination $env:windir -Force
+      Copy-Item -Path PowerPlan.pow -Destination $env:windir -Force
+      Copy-Item -Path RW-Everything -Destination "$env:ProgramFiles\RW-Everything" -Recurse -Force
+      Copy-Item -Path hosts -Destination $env:SystemRoot\System32\drivers\etc\hosts -Force
+    wait: true
+    exeDir: true
+
+  # Windows
+  - !writeStatus: {status: 'Configure PowerShell'}
+  - !task: {path: 'Tasks\windows\powershell.yml'}
+
+  - !writeStatus: {status: 'Removing AppX packages'}
+  - !task: {path: 'Tasks\windows\appx.yml'}
+
+  - !writeStatus: {status: 'Personalization'}
+  - !task: {path: 'Tasks\windows\personalization.yml'}
+
+  - !writeStatus: {status: 'Configure Services'}
+  - !task: {path: 'Tasks\windows\services.yml'}
+
+  - !writeStatus: {status: 'Disable Scheduled Tasks'}
+  - !task: {path: 'Tasks\windows\scheduled-tasks.yml'}
+
+  - !writeStatus: {status: 'Disable Windows Update'}
+  - !task: {path: 'Tasks\windows\update.yml'}
+
+  - !writeStatus: {status: 'Disable Notification'}
+  - !task: {path: 'Tasks\windows\notification.yml'}
+
+  - !writeStatus: {status: 'Configure Firewall'}
+  - !task: {path: 'Tasks\windows\firewall.yml'}
+
+  - !writeStatus: {status: 'Configure Microsoft Store'}
+  - !task: {path: 'Tasks\windows\microsoft-store.yml'}
+
+  - !writeStatus: {status: 'Configure BCD'}
+  - !task: {path: 'Tasks\windows\bcd.yml'}
+
+  - !writeStatus: {status: 'Network Settings'}
+  - !task: {path: 'Tasks\windows\network.yml'}
+
+  # Registry
+  - !writeStatus: {status: 'Privacy Settings'}
+  - !task: {path: 'Tasks\registry\privacy.yml'}
+
+  - !writeStatus: {status: 'Tweaks'}
+  - !task: {path: 'Tasks\registry\tweaks.yml'}
+
+  - !writeStatus: {status: 'Configure Priority Boost'}
+  - !task: {path: 'Tasks\registry\priorityboost.yml'}
+
+  # Security
+  - !writeStatus: {status: 'Disable Windows Defender'}
+  - !task: {path: 'Tasks\security\defender.yml'}
+
+  - !task: {path: 'Tasks\security\mitigations.yml'}
+  - !task: {path: 'Tasks\security\vbs.yml'}
+  
+  # Create shortcuts
+  - !powerShell:
+    command: '.\SHORTCUT.ps1'
+    exeDir: true
+    wait: true
+
+  # Software
+  - !task: {path: 'Tasks\software.yml'}
+
+  # Cleanup
+  - !writeStatus: {status: 'Cleanup'}
+  - !powerShell:
+    command: '.\CLEANUP.ps1'
+    exeDir: true
+    wait: true

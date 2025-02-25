@@ -1,0 +1,49 @@
+title: Network Settings
+actions:
+  # Adapter Settings
+  - !cmd:
+    command: |
+      for /f %%n in ('Reg query "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4D36E972-E325-11CE-BFC1-08002bE10318}" /v "*SpeedDuplex" /s ^| findstr "HKEY"') do (
+          Reg add "%%n" /v *EncapsulatedPacketTaskOffloadNvgre /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *EncapsulatedPacketTaskOffloadVxlan /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *EncapsulatedPacketTaskOffload /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *IPChecksumOffloadIPv4 /t REG_SZ /d 3 /f
+          Reg add "%%n" /v *TCPChecksumOffloadIPv4 /t REG_SZ /d 3 /f
+          Reg add "%%n" /v *TCPChecksumOffloadIPv6 /t REG_SZ /d 3 /f
+          Reg add "%%n" /v *UDPChecksumOffloadIPv4 /t REG_SZ /d 3 /f
+          Reg add "%%n" /v *UDPChecksumOffloadIPv6 /t REG_SZ /d 3 /f
+          Reg add "%%n" /v *LsoV1IPv4 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *LsoV2IPv4 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *LsoV2IPv6 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *TCPConnectionOffloadIPv4 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *TCPConnectionOffloadIPv6 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *TCPUDPChecksumOffloadIPv4 /t REG_SZ /d 3 /f
+          Reg add "%%n" /v *TCPUDPChecksumOffloadIPv6 /t REG_SZ /d 3 /f
+          Reg add "%%n" /v *UsoIPv4 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *UsoIPv6 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *RscIPv4 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *RscIPv6 /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *UdpRsc /t REG_SZ /d 1 /f
+          Reg add "%%n" /v *RSS /t REG_DWORD /d 1 /f
+          Reg add "%%n" /v *NumRssQueues /t REG_SZ /d 4 /f
+          Reg add "%%n" /v *InterruptModeration /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v *ReceiveBuffers /t REG_DWORD /d 4096 /f
+          Reg add "%%n" /v *TransmitBuffers /t REG_SZ /d 4096 /f
+          Reg add "%%n" /v "GreenEthernet" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "PowerSavingMode" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "EnergyEfficientEthernet" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "DeviceSleepOnDisconnect" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "PMARPOffload" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "PMNSOffload" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "WakeOnMagicPacket" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "WakeOnPattern" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "NicAutoPowerSaver" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "PMWiFiRekeyOffload" /t REG_DWORD /d 0 /f
+          Reg add "%%n" /v "PtpHardwareTimestamp" /t REG_DWORD /d 0 /f
+      )
+    wait: true
+  - !powerShell
+    command: |
+      Enable-NetAdapterBinding -Name * -ComponentID ms_pacer
+      Disable-NetAdapterBinding -Name '*' -ComponentID ms_lldp,ms_lltdio,ms_msclient,ms_rspndr,ms_server,ms_implat,ms_tcpip6,ms_pppoe,ms_rdma_ndk,ms_ndisuio,ms_wfplwf_upper,ms_wfplwf_lower,ms_netbt,ms_netbios,ms_ndiscap
+    wait: true

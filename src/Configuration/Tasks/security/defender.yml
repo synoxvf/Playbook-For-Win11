@@ -1,0 +1,6 @@
+title: Disalbe Windows Defender
+actions:
+  - !cmd:
+    command: '"Post-Install\5 - SECURITY\Defender\Disable Defender.bat" /silent'
+    exeDir: true
+    wait: true

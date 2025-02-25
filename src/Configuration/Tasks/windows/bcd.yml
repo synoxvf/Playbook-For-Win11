@@ -1,0 +1,83 @@
+title: BCD
+actions:
+  - !run: {exe: 'bcdedit', args: '/timeout 5'}
+
+  # Use legacy boot menu
+  # Faster as it doesn't boot into an OS
+  - !run: {exe: 'bcdedit', args: '/set bootmenupolicy legacy'}
+
+  # Disable the Windows logo at boot time
+  - !run: {exe: 'bcdedit', args: '/set {globalsettings} custom16000067 true'}
+
+  # Disabling messages during download
+  - !run: {exe: 'bcdedit', args: '/set {globalsettings} custom16000068 true'}
+
+  # Disabling animated circle at boot time
+  - !run: {exe: 'bcdedit', args: '/set {globalsettings} custom16000069 true'}
+
+  # Controls memory access to the operating system
+  - !run: {exe: 'bcdedit', args: '/set allowedinmemorysettings 0'}
+
+  # Controls the type of virtual secure mode startup
+  - !run: {exe: 'bcdedit', args: '/set vsmlaunchtype Off'}
+
+  # Disable FIPS cryptography
+  - !run: {exe: 'bcdedit', args: '/set forcefipscrypto No'}
+
+  # Forces the bootloader to select a specific TPM Boot Entropy policy
+  - !run: {exe: 'bcdedit', args: '/set tpmbootentropy ForceDisable'}
+
+  # Disables kernel debugger
+  - !run: {exe: 'bcdedit', args: '/set debug No'}
+
+  # Enables BIOS-configured PCI resources
+  - !run: {exe: 'bcdedit', args: '/deletevalue usefirmwarepcisettings'}
+
+  # Use a high-resolution bitmap instead of animating Windows boot screen
+  - !run: {exe: 'bcdedit', args: '/set quietboot Yes'}
+
+  # Enables advanced APIC mode
+  - !run: {exe: 'bcdedit', args: '/set x2apicpolicy enable'}
+
+  # Disable Emergency Management Services (EMS)
+  - !run: {exe: 'bcdedit', args: '/set ems No'}
+
+  # Disable system virtualization
+  - !run: {exe: 'bcdedit', args: '/set vm No'}
+  - !run: {exe: 'bcdedit', args: '/set vmslaunchtype Off'}
+
+  # Disable EMS for the bootloader menu
+  - !run: {exe: 'bcdedit', args: '/set bootems No'}
+
+  # Allocate zero buffer size for logging performance data
+  - !run: {exe: 'bcdedit', args: '/set perfmem 0'}
+
+  # Sets configuration flags related to the processor
+  - !run: {exe: 'bcdedit', args: '/set configflags 0'}
+
+  # Disables code integrity services
+  - !run: {exe: 'bcdedit', args: '/set integrityservices disable'}
+
+  # Disables boot graphics (shows a black screen instead)
+  - !run: {exe: 'bcdedit', args: '/set bootux Disabled'}
+
+  # Disables hypervisor booting
+  - !run: {exe: 'bcdedit', args: '/set hypervisorlaunchtype Off'}
+
+  # Disables system initialization log
+  - !run: {exe: 'bcdedit', args: '/set bootlog no'}
+
+  # Disables remote event logging
+  - !run: {exe: 'bcdedit', args: '/event off'}
+
+  # Disables boot debugging
+  - !run: {exe: 'bcdedit', args: '/bootdebug off'}
+
+  # Allows the first megabyte of memory usage
+  - !run: {exe: 'bcdedit', args: '/set firstmegabytepolicy UseAll'}
+
+  # Disables driver downloads from "unsafe sources"
+  - !run: {exe: 'bcdedit', args: '/set disableelamdrivers Yes'}
+
+  # Disables recovery options for frequent reboots
+  - !run: {exe: 'bcdedit', args: '/set recoveryenabled no'}

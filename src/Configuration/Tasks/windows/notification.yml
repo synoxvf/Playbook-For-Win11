@@ -1,0 +1,6 @@
+title: Disalbe Notification
+actions:
+  - !cmd:
+    command: '"Post-Install\2 - WINDOWS SETTINGS\SERVICES\NOTIFICATION\Disable (default).bat" /silent'
+    exeDir: true
+    wait: true

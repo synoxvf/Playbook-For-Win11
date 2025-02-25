@@ -1,0 +1,22 @@
+title: Install Software
+actions:
+  # Install Runtimes
+  - !writeStatus: {status: 'Installing Runtimes'}
+  - !powerShell:
+    command: '.\SOFTWARE.ps1'
+    exeDir: true
+    wait: true
+  # Chrome
+  - !writeStatus: {status: 'Installing Chrome', option: 'browser-chrome'}
+  - !powerShell:
+    option: browser-chrome
+    command: '.\SOFTWARE.ps1 -Chrome'
+    wait: true
+    exeDir: true
+  # FireFox
+  - !writeStatus: {status: 'Installing Firefox', option: 'browser-firefox'}
+  - !powerShell:
+    option: browser-firefox
+    command: '.\SOFTWARE.ps1 -Firefox'
+    wait: true
+    exeDir: true

@@ -1,0 +1,118 @@
+title: Configure Services
+actions:
+  # Telemetry
+  - !service: {name: 'diagsvc', operation: change, startup: 4}
+  - !service: {name: 'DiagTrack', operation: change, startup: 4}
+  - !service: {name: 'dmwappushservice', operation: change, startup: 4}
+  - !service: {name: 'diagnosticshub.standardcollector.service', operation: change, startup: 4}
+  - !service: {name: 'AJRouter', operation: change, startup: 4}
+  - !service: {name: 'OneSyncSvc', operation: change, startup: 4}
+  - !service: {name: 'TrkWks', operation: change, startup: 4}
+  - !service: {name: 'PcaSvc', operation: change, startup: 4}
+  - !service: {name: 'WerSvc', operation: change, startup: 4} 
+  - !service: {name: 'wercplsupport', operation: change, startup: 4}
+  - !service: {name: 'UCPD', operation: change, startup: 4}
+  - !service: {name: 'WbioSrvc', operation: change, startup: 4}
+  - !service: {name: 'wisvc', operation: change, startup: 4}
+  - !service: {name: 'AssignedAccessManagerSvc', operation: change, startup: 4}
+  - !service: {name: 'pla', operation: change, startup: 4}
+  - !service: {name: 'TroubleshootingSvc', operation: change, startup: 4}
+  - !service: {name: 'WarpJITSvc', operation: change, startup: 4}
+  - !service: {name: 'WdiServiceHost', operation: change, startup: 4}
+  - !service: {name: 'WdiSystemHost', operation: change, startup: 4}
+
+  # Bluetooth
+  - !service: {name: 'bluetoothuserservice', operation: change, startup: 4}
+  - !service: {name: 'btagservice', operation: change, startup: 4}
+  - !service: {name: 'bthserv', operation: change, startup: 4}
+  - !service: {name: 'btha2dp', operation: change, startup: 4}
+  - !service: {name: 'bthenum', operation: change, startup: 4}
+  - !service: {name: 'bthhfenum', operation: change, startup: 4}
+  - !service: {name: 'bthleenum', operation: change, startup: 4}
+  - !service: {name: 'bthmini', operation: change, startup: 4}
+  - !service: {name: 'bthmodem', operation: change, startup: 4}
+  - !service: {name: 'bthport', operation: change, startup: 4}
+  - !service: {name: 'bthusb', operation: change, startup: 4}
+  - !service: {name: 'hidbth', operation: change, startup: 4}
+  - !service: {name: 'microsoft_bluetooth_avrcptransport', operation: change, startup: 4}
+  - !service: {name: 'rfcomm', operation: change, startup: 4}
+
+  # Light Night and VDesk
+  - !service: {name: 'CDPSvc', operation: change, startup: 4}
+  - !service: {name: 'CDPUserSvc_*', operation: change, startup: 4}
+
+  # Print
+  - !service: {name: 'Spooler', operation: change, startup: 4}
+  - !service: {name: 'PrintWorkflowUserSvc_*', operation: change, startup: 4}
+  - !service: {name: 'StiSvc', operation: change, startup: 4}
+
+  # Proxy Vpn
+  - !service: {name: 'RasMan', operation: change, startup: 4}
+  - !service: {name: 'SstpSvc', operation: change, startup: 4}
+  - !service: {name: 'PolicyAgent', operation: change, startup: 4}
+
+  # Xbox
+  - !service: {name: 'XblAuthManager', operation: change, startup: 4}
+  - !service: {name: 'XblGameSave', operation: change, startup: 4}
+  - !service: {name: 'XboxGipSvc', operation: change, startup: 4}
+  - !service: {name: 'XboxNetApiSvc', operation: change, startup: 4}
+
+  # WmiAcpi
+  - !service: {name: 'WmiAcpi', operation: change, startup: 4}
+
+  # Remote-Desktop
+  - !service: {name: 'termservice', operation: change, startup: 4}
+  - !service: {name: 'umrdpservice', operation: change, startup: 4}
+  - !service: {name: 'winrm', operation: change, startup: 4}
+  - !service: {name: 'rdpbus', operation: change, startup: 4}
+  - !service: {name: 'rdpdr', operation: change, startup: 4}
+  - !service: {name: 'rdpvideominiport', operation: change, startup: 4}
+  - !service: {name: 'terminpt', operation: change, startup: 4}
+  - !service: {name: 'tsusbflt', operation: change, startup: 4}
+  - !service: {name: 'tsusbgd', operation: change, startup: 4}
+  - !service: {name: 'tsusbhub', operation: change, startup: 4}
+
+  # Disable Superfectch and Prefetcher
+  - !service: {name: 'SysMain', operation: change, startup: 4}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters', value: 'EnableSuperfetch', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters', value: 'EnablePrefetcher', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters', value: 'SfTracingState', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters', value: 'EnableBootTrace', type: REG_DWORD, data: '0'}
+  # Disable Superfetch's Eventlog connection.
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/Main', value: 'Enabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/PfApLog', value: 'Enabled', type: REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Superfetch/StoreLog', value: 'Enabled', type: REG_DWORD, data: '0'}
+  # Disable ReadyBoost
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\EMDMgmt', value: 'GroupPolicyDisallowCaches', type: REG_DWORD, data: '1'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\EMDMgmt', value: 'AllowNewCachesByDefault', type: REG_DWORD, data: '0'}
+
+  # Unnecessary
+  - !service: {name: 'SENS', operation: change, startup: 4}
+  - !service: {name: 'SensorDataService', operation: change, startup: 4}
+  - !service: {name: 'SensorService', operation: change, startup: 4}
+  - !service: {name: 'SensrSvc', operation: change, startup: 4}
+  - !service: {name: 'MapsBroker', operation: change, startup: 4}
+  - !service: {name: 'DPS', operation: change, startup: 4}
+  - !service: {name: 'tcpipreg', operation: change, startup: 4}
+  - !service: {name: 'DusmSvc', operation: change, startup: 4}
+  - !service: {name: 'FontCache', operation: change, startup: 4}
+  - !service: {name: 'FontCache3.0.0.0', operation: change, startup: 4}
+  - !service: {name: 'WSearch', operation: change, startup: 4}
+  - !service: {name: 'DsSvc', operation: change, startup: 4}
+  - !service: {name: 'Wecsvc', operation: change, startup: 4} 
+  - !service: {name: 'icssvc', operation: change, startup: 4} 
+  - !service: {name: 'NcaSvc', operation: change, startup: 4} 
+  - !service: {name: 'iphlpsvc', operation: change, startup: 4} 
+  - !service: {name: 'workfolderssvc', operation: change, startup: 4} 
+  - !service: {name: 'AppMgmt', operation: change, startup: 4}
+  - !service: {name: 'AxInstSV', operation: change, startup: 4}
+  - !service: {name: 'SEMgrSvc', operation: change, startup: 4}
+  - !service: {name: 'ShellHWDetection', operation: change, startup: 4}
+  - !service: {name: 'SSDPSRV', operation: change, startup: 4}
+  - !service: {name: 'WEPHOSTSVC', operation: change, startup: 4}
+  - !service: {name: 'luaf', operation: change, startup: 4}
+
+  # Drivers
+  - !service: {name: 'GpuEnergyDrv', operation: change, startup: 4}
+  - !service: {name: 'NetBT', operation: change, startup: 4}
+  - !service: {name: 'Telemetry', operation: change, startup: 4}

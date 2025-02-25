@@ -1,0 +1,8 @@
+title: Disable Mitigations
+option: disable-mitigations
+actions:
+  - !writeStatus: {status: 'Disable Mitigations'}
+  - !cmd:
+    command: '"Post-Install\5 - SECURITY\Mitigations\Disable Mitigations.bat" /silent'
+    exeDir: true
+    wait: true

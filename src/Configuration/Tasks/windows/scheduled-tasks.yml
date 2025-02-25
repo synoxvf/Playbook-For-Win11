@@ -1,0 +1,6 @@
+title: Disable Scheduled Tasks
+actions:
+  - !powerShell: 
+    command: Get-ScheduledTask | Where-Object { $_.TaskName -notin @('MsCtfMonitor') } | Disable-ScheduledTask
+    wait: true
+

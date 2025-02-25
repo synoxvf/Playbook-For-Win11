@@ -1,0 +1,8 @@
+title: Disable VBS
+option: disable-vbs
+actions:
+  - !writeStatus: {status: 'Disable VBS'}
+  - !cmd:
+    command: '"Post-Install\5 - SECURITY\VBS\Disable VBS.bat" /silent'
+    exeDir: true
+    wait: true

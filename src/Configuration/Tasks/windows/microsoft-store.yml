@@ -1,0 +1,25 @@
+title: Microsoft Store
+actions:
+  # Enable Microsoft Store
+  - !service: {name: 'ClipSVC', operation: change, startup: 2, option: enable-store}
+  - !service: {name: 'LicenseManager', operation: change, startup: 2, option: enable-store}
+  - !service: {name: 'wuauserv', operation: change, startup: 2, option: enable-store}
+  - !service: {name: 'dosvc', operation: change, startup: 2, option: enable-store}
+  - !service: {name: 'WaaSMedicSvc', operation: change, startup: 3, option: enable-store}
+  - !service: {name: 'UsoSvc', operation: change, startup: 2, option: enable-store}
+  - !service: {name: 'BITS', operation: change, startup: 3, option: enable-store}  
+  - !service: {name: 'InstallService', operation: change, startup: 3, option: enable-store}  
+  - !service: {name: 'BFE', operation: change, startup: 2, option: enable-store}  
+
+  # Disable Microsoft Store
+  - !service: {name: 'ClipSVC', operation: change, startup: 4, option: disable-store}
+  - !service: {name: 'LicenseManager', operation: change, startup: 4, option: disable-store}
+  - !service: {name: 'wuauserv', operation: change, startup: 4, option: disable-store}
+  - !service: {name: 'dosvc', operation: change, startup: 4, option: disable-store}
+  - !service: {name: 'WaaSMedicSvc', operation: change, startup: 4, option: disable-store}
+  - !service: {name: 'UsoSvc', operation: change, startup: 4, option: disable-store}
+  - !service: {name: 'BITS', operation: change, startup: 4, option: disable-store}  
+  - !service: {name: 'InstallService', operation: change, startup: 4, option: disable-store}  
+
+  # Disable auto-updates for Microsoft Store
+  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\WindowsStore', value: 'AutoDownload', type: REG_DWORD, data: '4'}
