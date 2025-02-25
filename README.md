@@ -1,8 +1,8 @@
 # Playbook-For-Win11
 Playbook for Windows 11 is all about improving performance and minimizing system latency. Make your system faster and more stable.
 
-[![LICENSE](https://img.shields.io/github/license/synoxvf/Playbook-For-Win11?style=for-the-badge&logo=github&color=blue)]()
-[![LICENSE](https://img.shields.io/github/release/synoxvf/Playbook-For-Win11?style=for-the-badge&logo=github&color=blue)]()
+[![LICENSE](https://img.shields.io/github/license/synoxvf/Playbook-For-Win11?style=for-the-badge&logo=github&color=blue)](https://github.com/synoxvf/Playbook-For-Win11/blob/main/LICENSE)
+[![RELEASE](https://img.shields.io/github/release/synoxvf/Playbook-For-Win11?style=for-the-badge&logo=github&color=blue)](https://github.com/synoxvf/Playbook-For-Win11/releases/latest)
 
 ## Requirements
 - Freshly installed Windows 11
@@ -26,4 +26,10 @@ Playbook for Windows 11 is all about improving performance and minimizing system
 ## Feedback
 If you have feedback, suggestions, or need help with Playbook, join the discussion on GitHub.
 
-[![Join the Discussion](https://img.shields.io/badge/JOIN-THE_DISSCUSION-blue?style=for-the-badge&logo=github&logoColor=white)]()
+[![Join THE DISSCUSION/ISSUES](https://img.shields.io/badge/JOIN-THE_DISSCUSION/ISSUES-blue?style=for-the-badge&logo=github&logoColor=white)](https://github.com/synoxvf/Playbook-For-Win11/issues)
+
+## Credits
+
+- **LLG RU**: [Discord](https://discord.gg/3ahEVQxsax) | [Cryptpad](https://cryptpad.fr/pad/#/2/pad/view/4yNddUVZYi40iv9J7GvJ1A-bBBpsxJ+6SK+ynYFm8uY/embed/)
+- **valleyofdoom**: [PC-Tuning GitHub](https://github.com/valleyofdoom/PC-Tuning)
+- **ShadowWhisperer**: [Remove-MS-Edge](https://github.com/ShadowWhisperer/Remove-MS-Edge)
