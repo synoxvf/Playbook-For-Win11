@@ -10,7 +10,7 @@ Playbook for Windows 11 is all about improving performance and minimizing system
   - 23H2
 ## Instructions for use
 1. Download **[AME Wizard](https://ameliorated.io/)**
-2. Download lastest version **[Playbook]()**
+2. Download lastest version **[Playbook](https://github.com/synoxvf/Playbook-For-Win11/releases/latest)**
 3. Open AME Wizard and drag and drop the downloaded file into it.
 4. Follow the on-screen instructions to complete the installation.
 ## What does Playbook do?
